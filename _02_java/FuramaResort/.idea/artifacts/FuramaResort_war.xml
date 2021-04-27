@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="FuramaResort:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>FuramaResort</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="FuramaResort-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="FuramaResort:war exploded" />
+    </root>
+  </artifact>
+</component>
