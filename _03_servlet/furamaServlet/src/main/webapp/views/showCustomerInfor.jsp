@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Admin
-  Date: 4/27/2021
-  Time: 4:18 PM
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <html>
@@ -39,11 +33,16 @@
 </head>
 <body>
 <div class="container">
-    <h2>Customer Information</h2>
+    <br>
+    <h2 align="center">Customer Information</h2>
+    <br>
+    <p style="color: green"><c:out value="${msg}"/></p>
+    <br>
+    <button><a href="/views/AddNewCustomer.jsp" style="color: #0b0b0b" >Add New Customer</a></button>
 
     <table class="table">
         <thead>
-        <tr>
+        <tr align="center">
             <th>ID</th>
             <th>Type ID</th>
             <th>Name</th>
@@ -53,13 +52,12 @@
             <th>Phone</th>
             <th>Email</th>
             <th>Address</th>
-
-
+            <th>Action</th>
         </tr>
         </thead>
 
         <tbody>
-            <c:forEach items="${Customer}", var="tempCus">
+            <c:forEach items="${CustomerList}" var="tempCus">
         <tr>
             <td>${tempCus.customer_id}</td>
             <td>${tempCus.customer_type_id}</td>
@@ -70,6 +68,8 @@
             <td>${tempCus.customer_phone}</td>
             <td>${tempCus.customer_email}</td>
             <td>${tempCus.customer_address}</td>
+            <td><button type="button">Delete</button></td>
+            <td><button type="button">Edit</button></td>
         </tr>
         </c:forEach>
         </tbody>

@@ -1,14 +1,14 @@
 package Models;
 
-import java.time.LocalDate;
 import java.util.Date;
+
 
 public class Customer {
    private int customer_id;
    private int customer_type_id;
    private String customer_name;
-   private LocalDate customer_birthday;
-   private String customer_gender;
+   private String customer_birthday;
+   private int customer_gender;
    private String customer_id_card;
    private String customer_phone;
    private String customer_email;
@@ -17,7 +17,7 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(int customer_id, int customer_type_id, String customer_name, LocalDate customer_birthday, String customer_gender, String customer_id_card, String customer_phone, String customer_email, String customer_address) {
+    public Customer(int customer_id, int customer_type_id, String customer_name, String customer_birthday, int customer_gender, String customer_id_card, String customer_phone, String customer_email, String customer_address) {
         this.customer_id = customer_id;
         this.customer_type_id = customer_type_id;
         this.customer_name = customer_name;
@@ -53,19 +53,19 @@ public class Customer {
         this.customer_name = customer_name;
     }
 
-    public LocalDate getCustomer_birthday() {
+    public String getCustomer_birthday() {
         return customer_birthday;
     }
 
-    public void setCustomer_birthday(LocalDate customer_birthday) {
+    public void setCustomer_birthday(String customer_birthday) {
         this.customer_birthday = customer_birthday;
     }
 
-    public String getCustomer_gender() {
+    public int getCustomer_gender() {
         return customer_gender;
     }
 
-    public void setCustomer_gender(String customer_gender) {
+    public void setCustomer_gender(int customer_gender) {
         this.customer_gender = customer_gender;
     }
 
@@ -99,5 +99,20 @@ public class Customer {
 
     public void setCustomer_address(String customer_address) {
         this.customer_address = customer_address;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "customer_id=" + customer_id +
+                ", customer_type_id=" + customer_type_id +
+                ", customer_name='" + customer_name + '\'' +
+                ", customer_birthday=" + customer_birthday +
+                ", customer_gender='" + customer_gender + '\'' +
+                ", customer_id_card='" + customer_id_card + '\'' +
+                ", customer_phone='" + customer_phone + '\'' +
+                ", customer_email='" + customer_email + '\'' +
+                ", customer_address='" + customer_address + '\'' +
+                '}';
     }
 }
