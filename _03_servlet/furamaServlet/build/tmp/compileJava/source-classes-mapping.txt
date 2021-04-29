@@ -1,6 +1,8 @@
-Controller/CustomerServlet.java
- Controller.CustomerServlet
-Models/DAO/CheckConnection.java
- Models.DAO.CheckConnection
 Models/Customer.java
  Models.Customer
+Models/Services/CustomerServices.java
+ Models.Services.CustomerServices
+Models/DAO/CustomerRepository.java
+ Models.DAO.CustomerRepository
+Controller/CustomerServlet.java
+ Controller.CustomerServlet

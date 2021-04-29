@@ -105,9 +105,127 @@ public class CustomerRepository {
 
     }
 
+    }
+    public static void deleteCustomer(int id){
+        String sql = "delete from customer where customer_id = ?";
+        Connection connection = getConnection();
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        if(connection != null){
+            try{
+                PreparedStatement stament = connection.prepareStatement(sql);
+                stament.setInt(1,id);
+                stament.execute();
+            } catch (SQLException e){
+                e.printStackTrace();
+            } finally {
+                try{
+                    if(connection != null){
+                        connection.close();
+                    }
+                    if(statement != null){
+                        statement.close();
+                    }
+                    if(resultSet != null){
+                        resultSet.close();
+                    }
+                } catch (SQLException e){
+                    e.printStackTrace();
+                }
+            }
 
+        }
+    }
+    public static Customer getCustomerByID(int id){
+        String sql = "select * from customer where customer_id = ?";
+        Connection connection = getConnection();
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        if(connection != null){
+            try{
+                PreparedStatement stament = connection.prepareStatement(sql);
+                stament.setInt(1,id);
+                resultSet = stament.executeQuery();
+                Customer customer = null;
+                if(resultSet.next()){
+                    customer = new Customer();
+                    customer.setCustomer_id(resultSet.getInt("customer_id"));
+                    customer.setCustomer_type_id(resultSet.getInt("customer_type_id"));
+                    customer.setCustomer_name(resultSet.getString("customer_name"));
+                    customer.setCustomer_birthday(resultSet.getString("customer_birthday"));
+                    customer.setCustomer_gender(resultSet.getInt("customer_gender"));
+                    customer.setCustomer_id_card(resultSet.getString("customer_id_card"));
+                    customer.setCustomer_phone(resultSet.getString("customer_phone"));
+                    customer.setCustomer_email(resultSet.getString("customer_email"));
+                    customer.setCustomer_address(resultSet.getString("customer_address"));
 
+                }
+                return customer;
+            } catch (SQLException e){
+                e.printStackTrace();
+            } finally {
+                try{
+                    if(connection != null){
+                        connection.close();
+                    }
+                    if(statement != null){
+                        statement.close();
+                    }
+                    if(resultSet != null){
+                        resultSet.close();
+                    }
+                } catch (SQLException e){
+                    e.printStackTrace();
+                }
+            }
 
+        }
 
+        return null;
+    }
+    public static void updateNewCustomer(Customer newCustomer){
+        String sql = "update customer SET `customer_type_id` = ? , `customer_name` = ?, `customer_birthday` = ?, `customer_gender` = ?, `customer_id_card` = ?, `customer_phone` = ?, `customer_email` = ?, `customer_address` = ? WHERE (`customer_id` = ?)";
+        Connection connection = getConnection();
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        if(connection != null){
+            try{
+                PreparedStatement stament = connection.prepareStatement(sql);
+                stament.setInt(1,newCustomer.getCustomer_type_id());
+                stament.setString(2, newCustomer.getCustomer_name());
+                stament.setString(3, newCustomer.getCustomer_birthday());
+                stament.setInt(4, newCustomer.getCustomer_gender());
+                stament.setString(5, newCustomer.getCustomer_id_card());
+                stament.setString(6, newCustomer.getCustomer_phone());
+                stament.setString(7, newCustomer.getCustomer_email());
+                stament.setString(8, newCustomer.getCustomer_address());
+                stament.setInt(9,newCustomer.getCustomer_id());
+                stament.execute();
+            } catch (SQLException e){
+                e.printStackTrace();
+            } finally {
+                try{
+                    if(connection != null){
+                        connection.close();
+                    }
+                    if(statement != null){
+                        statement.close();
+                    }
+                    if(resultSet != null){
+                        resultSet.close();
+                    }
+                } catch (SQLException e){
+                    e.printStackTrace();
+                }
+            }
+
+        }
+
+    }
 
 }
+
+
+
+
+
